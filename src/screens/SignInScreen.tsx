@@ -60,13 +60,13 @@ const SignInScreen = ({ navigation }: { navigation: any }) => {
       androidClientId: ANDROID_CLIENT_KEY,
       iosClientId: IOS_CLIENT_KEY,
       redirectUri: makeRedirectUri({
-        scheme: "com.nguyenvanthinh97a1.frontend",
+        scheme: SCHEME,
       }),
       scopes: ["openid", "profile", "email"],
     },
 
     {
-      native: `com.nguyenvanthinh97a1.frontend://`,
+      native: `${SCHEME}://`,
     }
   );
 

@@ -1,0 +1,65 @@
+{
+    "name": "Personal Finance",
+    "slug": "personal-finance",
+    "scheme": "com.personalfinancial.product",
+    "icon": "./assets/Anvest_Icon/Anvest App Icon@180.png",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "androidStatusBar": {
+      "hidden": true
+    },
+    "plugins": [
+      [
+        "expo-navigation-bar",
+        {
+          "position": "absolute",
+          "visibility": "hidden",
+          "behavior": "inset-swipe",
+          "backgroundColor": "#00000080"
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "sdkVersion"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Anvest_Icon/Anvest App Icon@180.png"
+      },
+      "runtimeVersion": "1.0.0",
+      "versionCode": 1,
+      "package": "com.personalfinancial.product"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "expo-navigation-bar": {
+        "position": "absolute",
+        "visibility": "hidden",
+        "behavior": "inset-swipe",
+        "backgroundColor": "#00000080"
+      }
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "androidNavigationBar": {
+      "backgroundColor": "#00000080"
+    }
+  }
+  
