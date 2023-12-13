@@ -77,7 +77,7 @@ const AccountCard = ({ data }: { data: any }) => {
     <View style={styles.container}>
       {data?.map((item: any, index: number) => (
         <LinearGradient
-          colors={JSON.parse(item.card_color)}
+          colors={JSON.parse(item.FinancialAccount.FiService.card_color)}
           key={item.id}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
@@ -130,7 +130,7 @@ const AccountCard = ({ data }: { data: any }) => {
                       fontWeight: "400",
                     }}
                   >
-                    {item.fi_name}
+                    {item.FinancialAccount.FiService.fi_name}
                   </Text>
                   {/* <Image
                     source={{

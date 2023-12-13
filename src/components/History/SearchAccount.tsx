@@ -13,7 +13,6 @@ import React, { useState } from "react";
 const SearchAccount = ({
   data,
   setSelectAccount,
-
   setClicked,
   setNum,
   setNumIn,
@@ -84,7 +83,7 @@ const SearchAccount = ({
                       setNum(0);
                       setNumIn(0);
                       setNumOut(0);
-                      setFiName(item.fi_name);
+                      setFiName(item.FinancialAccount.FiService.fi_name);
                       // setStopFetchMore(true);
                     }}
                     style={({ pressed }: { pressed: boolean }) =>
@@ -99,7 +98,7 @@ const SearchAccount = ({
                     >
                       <Image
                         source={{
-                          uri: item.logo,
+                          uri: item.FinancialAccount.FiService.logo,
                         }}
                         style={styles.icon}
                       />
@@ -147,7 +146,7 @@ const SearchAccount = ({
                             fontFamily: "Exo2_600SemiBold",
                           }}
                         >
-                          Tên ngân hàng: {item.fi_name}
+                          Tên ngân hàng: {item.FinancialAccount.FiService.fi_name}
                         </Text>
                       </View>
                     </View>

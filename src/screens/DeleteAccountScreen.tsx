@@ -185,7 +185,7 @@ const AccountBank = ({ navigation }: { navigation: any }) => {
               {dataArray.map((data: any, index: any) => (
                 <View key={index}>
                   <LinearGradient
-                    colors={JSON.parse(data.card_color)}
+                    colors={JSON.parse(data.FinancialAccount.FiService.card_color)}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1.2, y: 0 }}
                     style={{
@@ -244,7 +244,7 @@ const AccountBank = ({ navigation }: { navigation: any }) => {
                               color: "white",
                             }}
                           >
-                            {data.fi_name}
+                            {data.FinancialAccount.FiService.fi_name}
                           </Text>
                         </View>
                       </View>
@@ -297,7 +297,7 @@ const AccountBank = ({ navigation }: { navigation: any }) => {
                   </LinearGradient>
                   <ButtonComponent
                     onPress={() => {
-                      handleUnlinkBank(data.id_financial, data.id);
+                      handleUnlinkBank(data.FinancialAccount.id, data.id);
                     }}
                     disabled={loadingConfirm} // Không cho phép nhấn nút trong khi đang loading
                     overlayStyle={{

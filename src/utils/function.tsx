@@ -6,6 +6,7 @@ export function isValidEmail(value: string) {
   let valid = emailRegex.test(value);
   return value && valid;
 }
+
 export const storeData = async (key: string, value: string) => {
   await AsyncStorage.setItem(key, value);
   console.log("Dữ liệu đã được lưu trữ thành công");
@@ -14,7 +15,6 @@ export const storeData = async (key: string, value: string) => {
 export const setObjectValue = async (key: string, value: string[]) => {
   const jsonValue = JSON.stringify(value);
   await AsyncStorage.setItem(key, jsonValue);
-
   console.log("Dữ liệu Object đã được lưu trữ thành công");
 };
 

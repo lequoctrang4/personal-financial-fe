@@ -46,7 +46,7 @@ const Success = ({ navigation }: { navigation: any }) => {
         if (res.error === undefined) throw new Error("Lỗi Server");
         if (res.error) throw new Error(res.message);
         setDataArray(res.data);
-        setFiServiceName((res.data[res.data.length - 1] as any).fi_name);
+        setFiServiceName((res.data[0] as any).FinancialAccount.FiService.fi_name);
         setTimeout(() => {
           setLoadProgress(false);
         }, 800);
@@ -137,7 +137,7 @@ const Success = ({ navigation }: { navigation: any }) => {
                             color: "#434343",
                           }}
                         >
-                          {data.fi_name}
+                          {data.FinancialAccount.FiService.fi_name}
                         </Text>
                       </View>
                     </View>

@@ -157,7 +157,7 @@ export default function SyncAccount({ navigation }: { navigation: any }) {
                 (FiAccounts as any).map((data: any, index: any) => (
                   <View key={index}>
                     <LinearGradient
-                      colors={JSON.parse(data.card_color)}
+                      colors={JSON.parse(data.FiService.card_color)}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 1.2, y: 0 }}
                       style={{
@@ -222,7 +222,7 @@ export default function SyncAccount({ navigation }: { navigation: any }) {
                                 color: "white",
                               }}
                             >
-                              {data.fi_name}
+                              {data.FiService.fi_name}
                             </Text>
                           </View>
                         </View>
@@ -265,7 +265,7 @@ export default function SyncAccount({ navigation }: { navigation: any }) {
                                 textAlign: "right",
                               }}
                             >
-                              {data.type}
+                              {data.FiService.type}
                             </Text>
                           </View>
                         </View>
