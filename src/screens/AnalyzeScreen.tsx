@@ -191,6 +191,7 @@ const Analyze = ({ navigation }: { navigation: any }) => {
         if (!token)
           throw new Error("Bạn không có phân quyền truy cập vào dữ liệu!");
         let res = await getBalanceUserInDate(token, selectedDate);
+        console.log(res);
         if (res.error === undefined) throw new Error("Lỗi server");
         if (res.error) throw new Error(res.message);
         let d = new Date(selectedDate);

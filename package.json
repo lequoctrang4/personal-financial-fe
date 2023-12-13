@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "dev": "expo start --dev-client",
+    "dev": "npx expo start --dev-client",
+    "android": "npx expo run:android",
+    "buildAnroid": "npx expo run:android --variant release",
+    "buildIos": "px expo run:ios --configuration Release",
     "loadEnv": "npm cache clean --force && expo start --clear",
     "ios": "expo run:ios",
     "web": "expo start --web"
