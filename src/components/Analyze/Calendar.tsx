@@ -23,17 +23,16 @@ const Calendar = ({
   const [load, setLoad] = useState(true);
   const [isScrollViewReady, setScrollViewReady] = useState(false);
   const handleScrollViewLayout = () => {
-    // Called when the ScrollView layout is calculated
     setScrollViewReady(true);
+
   };
   useEffect(() => {
+    setScrollViewReady(false);
     setLoad(true);
-    setTimeout(() => {
-      setLoad(false);
-    }, 1000);
     (async () => {
+      console.log(selectedDate, selectMonth, selectYear);
+
       let day = new Date(selectYear + "-" + selectMonth.substring(6) + "-01");
-      console.log(selectMonth);
       const parsedYear: number = parseInt(selectYear, 10);
       const parsedMonth: number = parseInt(selectMonth.substring(6), 10);
       const daysInMonth: number = new Date(
@@ -50,22 +49,27 @@ const Calendar = ({
         _dates.push(day.toISOString().split("T")[0]);
       }
       setDates(_dates as any);
+      setTimeout(() =>  setLoad(false), 1000)
+     
+
     })();
-  }, [selectMonth, selectYear]);
+  }, []);
   const horizontalScrollViewRef = useRef(null);
 
   useEffect(() => {
     // Đảm bảo ScrollView đã sẵn sàng trước khi cuộn đến cuối cùng
-    if (isScrollViewReady && horizontalScrollViewRef.current) {
+    if (
+      isScrollViewReady &&
+      horizontalScrollViewRef &&
+      horizontalScrollViewRef.current
+    ) {
       (horizontalScrollViewRef.current as any).scrollToEnd({ animated: true });
     }
   }, [isScrollViewReady, dates, reload]); //
-
   return (
-    <>
       <View style={styles.dateSection}>
         {load && (
-          <ContentLoader speed={0.5}>
+          <>
             <Rect x="0" y="10" width="60" height="60" rx="4" ry="4" />
             <Rect x="70" y="10" width="60" height="60" rx="4" ry="4" />
             <Rect x="140" y="10" width="60" height="60" rx="4" ry="4" />
@@ -73,30 +77,32 @@ const Calendar = ({
             <Rect x="280" y="10" width="60" height="60" rx="4" ry="4" />
             <Rect x="350" y="10" width="60" height="60" rx="4" ry="4" />
             <Rect x="420" y="10" width="60" height="60" rx="4" ry="4" />
-          </ContentLoader>
+          </>
         )}
 
-        <ScrollView
-          ref={horizontalScrollViewRef}
-          horizontal
-          showsHorizontalScrollIndicator={true}
-          alwaysBounceHorizontal={false}
-          stickyHeaderIndices={[10]}
-          onLayout={handleScrollViewLayout} // Call the handler when ScrollView layout is calculated
-        >
-          {dates.map((date, index) => {
-            return (
-              <DateItem
-                key={index}
-                date={date}
-                check={selectedDate === date}
-                setSelectedDate={setSelectedDate}
-              />
-            );
-          })}
-        </ScrollView>
+        {!load && (
+          <ScrollView
+            ref={horizontalScrollViewRef}
+            horizontal
+            showsHorizontalScrollIndicator={true}
+            alwaysBounceHorizontal={false}
+            stickyHeaderIndices={[10]}
+            onLayout={handleScrollViewLayout}
+          >
+          
+            {dates.map((date, index) => {
+              return (
+                <DateItem
+                  key={index}
+                  date={date}
+                  check={selectedDate === date}
+                  setSelectedDate={setSelectedDate}
+                />
+              );
+            })}
+          </ScrollView>
+        )}
       </View>
-    </>
   );
 };
 

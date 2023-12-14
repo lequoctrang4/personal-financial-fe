@@ -24,6 +24,8 @@ const TreeMap = ({ data, sum }: { data: any; sum: any }) => {
   }
   function formartDesc(str: string) {
     if (str === "Spend Account") return "Tài khoản thanh toán";
+    else if (str=== "Credit Account") return "Tài khoản tín dụng"
+    else if (str==="Saving Account") return "Tài khoản tiết kiệm"
     return "Tài khoản khác";
   }
   const root = d3

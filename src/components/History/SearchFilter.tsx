@@ -10,7 +10,7 @@ import {
 import { Icons } from "../../components/Style/Icons";
 import { currencyFormat, getData, removeData } from "../../utils/function";
 import React, { useState, useEffect } from "react";
-import { searchTransaction } from "../../api/userApi";
+import { getAllTransactions } from "../../api/userApi";
 import useDebounce from "./useDebounce";
 import { setObjectValue, getMyObject, formatArray } from "../../utils/function";
 import { useNavigation } from "@react-navigation/native";
@@ -40,8 +40,10 @@ const SearchFilter = ({
             if (!token) {
               throw new Error("Bạn không có phân quyền truy cập vào dữ liệu!");
             }
-            let res = await searchTransaction(
+            let res = await getAllTransactions(
               token,
+              undefined,
+              undefined,
               undefined,
               undefined,
               undefined,
@@ -234,7 +236,7 @@ const SearchFilter = ({
                         >
                           <Image
                             source={{
-                              uri: item.logo,
+                              uri: item.Account.FinancialAccount.FiService.logo,
                             }}
                             style={styles.icon}
                           />
@@ -262,7 +264,7 @@ const SearchFilter = ({
                                   fontFamily: "Exo2_600SemiBold",
                                 }}
                               >
-                                {item.account_number}
+                                {item.Account.account_number}
                               </Text>
                             </View>
 
